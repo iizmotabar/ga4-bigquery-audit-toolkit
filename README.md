@@ -8,34 +8,7 @@ Most GA4 to BigQuery setups look fine on the surface and fall apart once you che
 
 ## Architecture
 
-```mermaid
-flowchart TD
-    subgraph Diagnose["Diagnostic phase"]
-        A[Raw GA4 export in BigQuery] --> B[utm_capture_check.sql]
-        A --> C[session_attribution_gaps.sql]
-        A --> D[duplicate_event_check.sql]
-        B --> E{Issues found?}
-        C --> E
-        D --> E
-    end
-
-    E -->|Yes| F[Fix at the tagging / GTM layer]
-    F --> A
-    E -->|No, export confirmed clean| G[Build phase]
-
-    subgraph Build["Modeling phase"]
-        G --> H[stg_ga4_events.sql]
-        H --> I[fct_sessions.sql]
-        I --> J[Downstream: dashboards, attribution, CRM sync]
-    end
-
-    classDef check fill:#F5F4FA,stroke:#644aab,color:#333
-    classDef decision fill:#fff3cd,stroke:#d35400,color:#333
-    classDef model fill:#e8f5e9,stroke:#1e8449,color:#333
-    class B,C,D check
-    class E decision
-    class H,I model
-```
+![Architecture diagram](diagram.svg)
 
 The loop back from "issues found" to the raw export matters: this toolkit is written on the assumption that you never model on top of a dirty export. Every fix happens at the tagging layer first, and the diagnostic queries get re-run before any dbt model is trusted.
 
