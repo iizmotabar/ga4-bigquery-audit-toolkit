@@ -1,6 +1,6 @@
 # GA4 → BigQuery Audit Toolkit
 
-A set of SQL queries and dbt models I use when auditing a client's GA4 to BigQuery export. Real client data never leaves the client's warehouse, so this repo uses anonymized, representative patterns instead. It exists to show the kind of checks and models behind the audits I run at [motabar.builds.stuff](https://motabar.builds.stuff).
+A set of SQL queries and dbt models I use when auditing a client's GA4 to BigQuery export. Real client data never leaves the client's warehouse, so this repo uses anonymized, representative patterns instead. It exists to show the kind of checks and models behind the audits I run at [motabar.builds.stuff](https://motabarbuildstuff.com/).
 
 ## Why this exists
 
@@ -46,3 +46,12 @@ Anything else is a finding that goes into the fix order table of the audit.
 ## Stack
 
 BigQuery, dbt, SQL
+
+## Related
+
+* Service: [Free GA4 health check](https://motabarbuildstuff.com/ga4-health-check/)
+* Guide: [Why is my GA4 direct traffic so high?](https://motabarbuildstuff.com/blog/why-is-ga4-direct-traffic-so-high/)
+* Guide: [How much does a GA4 setup cost in 2026?](https://motabarbuildstuff.com/blog/how-much-does-ga4-setup-cost/)
+* Service: [GA4 audit and repair](https://motabarbuildstuff.com/ga4-setup-consultant/)
+
+Built by [Motabar Javaid](https://motabarbuildstuff.com/about/), analytics engineer at [motabar.builds.stuff](https://motabarbuildstuff.com/).
